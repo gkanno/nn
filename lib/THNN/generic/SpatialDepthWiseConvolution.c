@@ -150,8 +150,8 @@ void THNN_(SpatialDepthWiseConvolution_updateOutput)(
     THTensor_(resize4d)(input_c, 1, input_c->size[0], input_c->size[1], input_c->size[2]);
   }
 
-  long inputHeight  = input_c->size[3];
-  long inputWidth   = input_c->size[2];
+  long inputHeight  = input_c->size[2];
+  long inputWidth   = input_c->size[3];
   long outputHeight = (inputHeight + 2*padH - kH) / dH + 1;
   long outputWidth  = (inputWidth + 2*padW - kW) / dW + 1;
 
@@ -298,8 +298,8 @@ void THNN_(SpatialDepthWiseConvolution_updateGradInput)(
     THTensor_(resize5d)(gradOutput_work, 1, gradOutput_work->size[0], gradOutput_work->size[1], gradOutput_work->size[2], gradOutput_work->size[3]);
   }
 
-  long inputHeight  = input_c->size[3];
-  long inputWidth   = input_c->size[2];
+  long inputHeight  = input_c->size[2];
+  long inputWidth   = input_c->size[3];
   long outputHeight = (inputHeight + 2*padH - kH) / dH + 1;
   long outputWidth  = (inputWidth + 2*padW - kW) / dW + 1;
 
@@ -463,8 +463,8 @@ void THNN_(SpatialDepthWiseConvolution_accGradParameters)(
     THTensor_(resize5d)(gradOutput_work, 1, gradOutput_work->size[0], gradOutput_work->size[1], gradOutput_work->size[2], gradOutput_work->size[3]);
   }
 
-  long inputHeight  = input_c->size[3];
-  long inputWidth   = input_c->size[2];
+  long inputHeight  = input_c->size[2];
+  long inputWidth   = input_c->size[3];
   long outputHeight = (inputHeight + 2*padH - kH) / dH + 1;
   long outputWidth  = (inputWidth + 2*padW - kW) / dW + 1;
 
