@@ -136,7 +136,7 @@ void THNN_(SpatialDepthWiseConvolution_updateOutput)(
   long s1 = weight_tc->size[0];
   long s2 = weight_tc->size[1];
   long s3 = weight_tc->size[2] * weight_tc->size[3];
-  weight_rs = THTensor_(newWithStorage3d)(weight_tc->storage, weight_tc->storageOffset,
+  THTensor *weight_rs = THTensor_(newWithStorage3d)(weight_tc->storage, weight_tc->storageOffset,
           s1, -1, s2, -1, s3, -1);
 
   THTensor *input_c = THTensor_(newContiguous)(input);
@@ -259,7 +259,7 @@ void THNN_(SpatialDepthWiseConvolution_updateGradInput)(
   if (weight->nDimension == 2) {
     THTensor_(resize4d)(weight, nOutputPlane, nInputPlane, kH, kW);
   }
-  gradOutput_work = THTensor_(newWithTensor)(gradOutput);
+  THTensor *gradOutput_work = THTensor_(newWithTensor)(gradOutput);
 
   if (input->nDimension == 3) {
     if (gradOutput_work->nDimension == 3) {
